@@ -1,0 +1,49 @@
+---
+title: "project3_presentation"
+author: "Yangtaoyuan"
+date: "2021/1/12"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## About the Course Project
+
+This is the final project on the Data product developing.
+Requirement:
+
+1. Write a shiny application with associated supporting documentation. The documentation should be thought of as whatever a user will need to get started using your application.
+2. Deploy the application on Rstudio's shiny server
+3. Share the application link by pasting it into the provided text box
+4. Share your server.R and ui.R code on github
+
+## How to use the application
+The apps based on parents' height and adopt the linear model to predict their children's height when the gender of children was provided, the dataset Galton Families are used to build this model.
+
+The application is running on
+(https://taoyuanyang.shinyapps.io/develop_data_project3/)
+
+ui.R, and Server.R Code in my github repository (https://github.com/taoyuanyang/Develop_data_product-project3)
+
+## Galton Families Dataset
+
+The app adopts GaltonFamilies dataset. 
+
+```{r summary}
+library(HistData)
+data(GaltonFamilies)
+summary(GaltonFamilies)
+```
+
+## Plot
+Plot the adopted data
+```{r plot}
+library(HistData)
+data(GaltonFamilies)
+plot(jitter(GaltonFamilies$childHeight) ~ GaltonFamilies$midparentHeight,xlab="Average Height of the Parents (in inches)",ylab="Height of the Child (in inches)",main="Scatterplot of Galton Family Data",pch=19,frame.plot=FALSE,col=ifelse(GaltonFamilies$gender=="female", "pink", "light blue"))
+legend(65,80,pch=c(19,19),col=c("pink","light blue"),c("female", "male"),bty="o",cex=.8)
+```
+
+
